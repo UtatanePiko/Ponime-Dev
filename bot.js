@@ -37,4 +37,4 @@ require("./handler")(bot);
 
 require('dotenv').config()
 //bot.login(process.env.BOT_TOKEN)
-bot.login("ODU0MzY5NzAxODk0MDI5MzIy.YMi7yg.Ke5sYwU1PWUj5UsNMfaV1dbAF2o")
+bot.login("ODU0MzY5NzAxODk0MDI5MzIy.GNb2u-.O5HRQRarcI-s1hA8a-JVj86zhMSFudIN-1iI18")
