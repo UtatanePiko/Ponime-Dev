@@ -243,7 +243,7 @@ bot.on("messageCreate", async (message) => {
                     })
                 } else {
                     let helperRole = message.guild.roles.cache.find(r => r.name == "Helper") || message.guild.roles.cache.find(r => r.name == "Хелпер")
-                    if(!message.member.permissions.has("MANAGE_ROLES", true) && !message.member.roles.cache.has(helperRole) && !message.member.user.bot){
+                    if((!message.member.permissions.has("MANAGE_ROLES", true) || !message.member.roles.cache.has(helperRole)) && !message.member.user.bot){
                         message.react(checkmark)
                         message.react(cross)
                         message.channel.threads.create({

@@ -832,6 +832,26 @@ module.exports = {
         return action
     },
 
+    
+    NEGATIVE_SELECT_MENU(message, items, state){
+        let select = new Discord.MessageSelectMenu()
+                    .setCustomId('negative_select')
+                    .setDisabled(state || false)
+                    .setPlaceholder('Выберите роль')
+
+                    items.forEach(item => {
+                        let findRole = message.guild.roles.cache.get(item)
+                        if(!item) return
+                        select.addOptions({
+                            label: findRole.name,
+                            value: findRole.id
+                        })
+                    })
+
+        let action = new Discord.MessageActionRow().addComponents([select])
+        return action
+    },
+
     INFINITE_WEEK_DECLINE_BUTTONS(infinite, week, infinite_state, state){
         const coin = Util.findEmoji('CHPOKI_COIN')
         let action = new Discord.MessageActionRow().addComponents(

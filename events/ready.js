@@ -39,7 +39,7 @@ bot.on('ready', () => {
 
             let promise = await Promise.all(
                 [
-                    await Guild.findOne({guildID: guild.id}).lean(),
+                    await Guild.findOne({guildID: guild.id}),
                     await allowedChannels.findOne().lean(),
                     await Warnings.findOne().sort({"_id":-1}).limit(1).lean()
                 ]
@@ -57,6 +57,20 @@ bot.on('ready', () => {
                 roles: server.roles || [],
                 event_channels: server.event_channels || []
             })
+
+            let negative_roles = server.negative_roles
+            await negative_roles.forEach(role => {
+                let findRole = bot.guilds.cache.get(guild.id).roles.cache.get(role)
+                //console.log(role)
+                if(!findRole){
+                    let index = negative_roles.indexOf(role)
+                    negative_roles.splice(index, 1)
+                }
+            })
+            server.negative_roles = negative_roles
+            server.save()
+            bot.negative_roles.set(guild.id, server.negative_roles)
+
             console.log('Префиксы инициализированы')
 
             // Voice activity

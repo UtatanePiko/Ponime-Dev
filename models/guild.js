@@ -19,7 +19,8 @@ const guildSchema = mongoose.Schema({
     spam_duration: Number,
     blocked_channels: Array,
     roles: Array,
-    event_channels: Array
+    event_channels: Array,
+    negative_roles: Array
 });
 
 module.exports = mongoose.model('Guild', guildSchema, 'guild');
