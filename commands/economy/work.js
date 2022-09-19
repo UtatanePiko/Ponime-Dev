@@ -67,7 +67,7 @@ module.exports = {
                         if(dbUser.daily_cd !== null && cooldown - (Date.now() - parseInt(dbUser.daily_cd)) < 0){
                             dbUser.currency = parseInt(dbUser.currency) + amount
                             dbUser.total_currency = parseInt(dbUser.bank) + parseInt(dbUser.currency)
-                            dbUser.daily_cd = Date.now()
+                            //dbUser.daily_cd = Date.now()
                             dbUser.save().catch(console.error).then(`${message.member.displayName} использовал work и получил ${amount}`)
                             return checkmarkText(dailyText, message)
                         } else {

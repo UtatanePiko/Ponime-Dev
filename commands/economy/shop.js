@@ -77,7 +77,7 @@ module.exports = {
                         if(shopArr.length <= end){
                             for(i = start; i < shopArr.length; i++){
                                 let item = shopArr[i]
-                                if(item.customId == 'removing_role'){
+                                if(item.customId == 'removing_role' || item.customId == 'role_removing'){
                                     FullArr.push(`**ID:** ${i + 1}\nСнятие негативной роли\n**Цена**: ${item.infinite_price} ${coin}`)
                                 } else {
                                     FullArr.push(`**ID:** ${i + 1}\n**Роль:** <@&${item.roleID}>\n**Цена**: ${item.infinite_price > 0 && item.week_price > 0 ? `${item.infinite_price} ${coin} | ${item.week_price} ${coin} 1 нед.` :
@@ -88,7 +88,7 @@ module.exports = {
                         } else {
                             for(i = start; i < end; i++){
                                 let item = shopArr[i]
-                                if(item.customId == 'removing_role'){
+                                if(item.customId == 'removing_role' || item.customId == 'role_removing'){
                                     FullArr.push(`**ID:** ${i + 1}\nСнятие негативной роли\n**Цена**: ${item.infinite_price} ${coin}`)
                                 } else {
                                     FullArr.push(`**ID:** ${i + 1}\n**Роль:** <@&${item.roleID}>\n**Цена**: ${item.infinite_price > 0 && item.week_price > 0 ? `${item.infinite_price} ${coin} | ${item.week_price} ${coin} 1 нед.` :

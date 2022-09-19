@@ -57,6 +57,8 @@ module.exports = {
                         let cooldown = 1000 * 60 * 60 * 24
 
                         let sucOrFail = Math.floor(Math.random() * 10)
+
+                        if(parseInt(dbUser.currency) + parseInt(dbUser.bank) > (parseInt(dbMentUser.currency) + parseInt(dbMentUser.bank)) * 2) sucOrFail = 10
     
                         if(dbUser.rob_cd !== null && cooldown - (Date.now() - parseInt(dbUser.rob_cd)) < 0){
                             if(sucOrFail >= 4){
@@ -64,15 +66,18 @@ module.exports = {
                                 //let randDaily = Math.floor(Math.random() * robSucArray.length)
                                 robSucText = `Вы украли **${Math.abs(amount)}** ${coin} у **${mentuser.displayName}**`
                                 dbUser.currency = parseInt(dbUser.currency) + amount
+                                dbUser.total_currency = parseInt(dbUser.currency) + parseInt(dbUser.bank)
                                 dbMentUser.currency = parseInt(dbMentUser.currency) - amount
-                                dbUser.rob_cd = Date.now()
+                                dbMentUser.total_currency = parseInt(dbMentUser.currency) + parseInt(dbMentUser.bank)
+                                //dbUser.rob_cd = Date.now()
                                 checkmarkText(robSucText, message)
                             } else {
                                 amount = Math.floor(100 + Math.random() * 400)
                                 //let randDaily = Math.floor(Math.random() * robFailArray.length)
                                 let robSucText = `Вы попались на краже и потеряли **${Math.abs(amount)}** ${coin}`
                                 dbUser.currency = parseInt(dbUser.currency) - amount
-                                dbUser.rob_cd = Date.now()
+                                dbUser.total_currency = parseInt(dbUser.currency) + parseInt(dbUser.bank)
+                                //dbUser.rob_cd = Date.now()
                                 crossText(robSucText, message)
                             }
                             dbMentUser.save().catch(console.error)

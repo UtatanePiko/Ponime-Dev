@@ -40,13 +40,13 @@ module.exports = {
             if(!amount) return crossText (`Не было указано количетсво забираемых монет`, message)
             if(args[0].toLowerCase() == "all" || args[0].toLowerCase() == "все") amount = dbUser.currency
             if((!isFinite(args[0]) || args[0].includes("+") || args[0] % 1 !== 0 || args[0].includes(".")) && parseInt(args[0]) > 0) return crossText(`Указанное значение не является целым положительным числом`, message)        
+            if(amount < 100) return crossText (`Нельзя поставить меньше 100 монет`, message)
             if(amount > dbUser.currency) return crossText (`Вы не можете поставить больше, чем у вас есть на руках\nВаш баланс на руках: **\`${dbUser.currency}\`**`, message)
 
             let bj = await blackjack(message, args, amount)
             
             if(bj.result == "WIN") dbUser.currency = parseInt(dbUser.currency) + parseInt(amount)
             if(bj.result == "LOSE") dbUser.currency = parseInt(dbUser.currency) - parseInt(amount)
-            dbUser.total_currency = parseInt(dbUser.currency) + parseInt(dbUser.bank)
             dbUser.save().catch()
         
 

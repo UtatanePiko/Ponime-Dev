@@ -70,14 +70,14 @@ module.exports = {
                                 let crimeSucText = crimeSucArray.length != 0 ? crimeSucArray[randDaily].replace(/{coin}/g, `**${amount}**${coin}`) : `Стандартное сообщение, если нет добавленных фраз. Успех. +${amount}${coin}`
                                 dbUser.currency = parseInt(dbUser.currency) + amount
                                 dbUser.total_currency = parseInt(dbUser.bank) + parseInt(dbUser.currency)
-                                dbUser.crime_cd = Date.now()
+                                //dbUser.crime_cd = Date.now()
                                 checkmarkText(crimeSucText, message)
                             } else {
                                 let randDaily = Math.floor(Math.random() * crimeFailArray.length)
                                 let crimeSucText = crimeFailArray.length != 0 ? crimeFailArray[randDaily].replace(/{coin}/g, `**${amount}**${coin}`) : `Стандартное сообщение, если нет добавленных фраз. Неудача. -${amount}${coin}`
                                 dbUser.currency = parseInt(dbUser.currency) - amount
                                 dbUser.total_currency = parseInt(dbUser.bank) + parseInt(dbUser.currency)
-                                dbUser.crime_cd = Date.now()
+                                //dbUser.crime_cd = Date.now()
                                 crossText(crimeSucText, message)
                             }
                             dbUser.save().catch(console.error).then(`${message.member.displayName} использовал crime`)

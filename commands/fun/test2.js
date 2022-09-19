@@ -8,15 +8,7 @@ module.exports = {
 
         try {
 
-            bot.server.set(message.guild.id, {
-                prefix: bot.server.get(message.guild.id).prefix,
-                actions_channels: bot.server.get(message.guild.id).actions_channels,
-                leveling_channels: bot.server.get(message.guild.id).leveling_channels,
-                moderation_channels: bot.server.get(message.guild.id).moderation_channels,
-                warnID: bot.server.get(message.guild.id).warnID,
-                roles: [],
-                event_channels: bot.server.get(message.guild.id).event_channels || []
-            })
+            console.log('Startup Successful!')
 
             // let embed2 = new Discord.MessageEmbed().setColor(noColor())
             // .setDescription(`<@&992500202781016144>\n<@&992500220682313858>\n<@&992500229058347118>⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣ ⁣⁣ ⁣`)
