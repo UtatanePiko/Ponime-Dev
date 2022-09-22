@@ -48,7 +48,7 @@ module.exports = {
                     if(!isFinite(amount) || parseInt(amount) % 1 != 0 || args[0].includes(".") || args[0].includes("+")) return crossText(`Вкладываемая сумма должна быть целым числом\nПример: **\`${message.content.split(" ")[0].toLowerCase()} 1000\`**`, message)
                     if(amount > parseInt(dbuser.currency)) return crossText(`Вы не можете внести больше, чем у вас имеется на руках`, message)
                     if(amount <= 0) return crossText(`Вы не можете внести сумму 0 или меньше`, message)
-                    checkmarkText(`Вы успешно внесли в банк **${amount}**${coin}`, message)
+                    checkmarkText(`Вы успешно внесли в банк **${parseInt(amount)}**${coin}`, message)
                     dbuser.bank = parseInt(dbuser.bank) + parseInt(amount)
                     dbuser.currency = parseInt(dbuser.currency) - parseInt(amount)
                     dbuser.total_currency = parseInt(dbuser.bank) + parseInt(dbuser.currency)

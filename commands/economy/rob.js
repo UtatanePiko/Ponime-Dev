@@ -57,11 +57,11 @@ module.exports = {
                         let cooldown = 1000 * 60 * 60 * 24
 
                         let sucOrFail = Math.floor(Math.random() * 10)
-
-                        if(parseInt(dbUser.currency) + parseInt(dbUser.bank) > (parseInt(dbMentUser.currency) + parseInt(dbMentUser.bank)) * 2) sucOrFail = 10
+                        if(parseInt(dbMentUser.currency) == 0) return crossText(`Вы не можете обокрасть пользователя, так как у него нечего красть с собой`, message)
+                        if(parseInt(dbUser.currency) + parseInt(dbUser.bank) > (parseInt(dbMentUser.currency) + parseInt(dbMentUser.bank)) * 2) sucOrFail = 0
     
                         if(dbUser.rob_cd !== null && cooldown - (Date.now() - parseInt(dbUser.rob_cd)) < 0){
-                            if(sucOrFail >= 4){
+                            if(sucOrFail >= 3){
                                 amount = Math.floor(parseInt(dbMentUser.currency) / 100 * (50 + Math.random() * 30))
                                 //let randDaily = Math.floor(Math.random() * robSucArray.length)
                                 robSucText = `Вы украли **${Math.abs(amount)}** ${coin} у **${mentuser.displayName}**`

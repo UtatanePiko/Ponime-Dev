@@ -44,7 +44,7 @@ module.exports = {
                     if(parseInt(dbuser.bank) <= 0) return crossText(`Вам нечего снимать в банке, он пуст`, message)
                     if(!args[0]) return crossText(`Вы не указали сумму\nПример: **\`${message.content.split(" ")[0].toLowerCase()} <Число | all/все | half/половина>\`**`, message)
                     if(args[0].toLowerCase() != "all" || args[0].toLowerCase() != "half" || args[0].toLowerCase() != "всё" || args[0].toLowerCase() != "все" || args[0].toLowerCase() != "половина" || args[0].toLowerCase() != "половину") amount = args[0]
-                    if(args[0].toLowerCase() == 'all' || args[0].toLowerCase() == 'всё' || args[0].toLowerCase() == 'все') amount = parseInt(dbuser.currency)
+                    if(args[0].toLowerCase() == 'all' || args[0].toLowerCase() == 'всё' || args[0].toLowerCase() == 'все') amount = parseInt(dbuser.bank)
                     if(args[0].toLowerCase() == 'half' || args[0].toLowerCase() == 'половина' || args[0].toLowerCase() == 'половину') amount = Math.floor(dbuser.bank / 2)
                     if(!isFinite(amount) || parseInt(amount) % 1 != 0 || args[0].includes(".") || args[0].includes("+")) return crossText(`Снимаемая сумма должна быть целым числом\nПример: **\`${message.content.split(" ")[0].toLowerCase()} 1000\`**`, message)
                     if(amount > parseInt(dbuser.bank)) return crossText(`Вы не можете cнять больше, чем у вас имеется в банке`, message)
@@ -53,7 +53,7 @@ module.exports = {
                     dbuser.currency = parseInt(dbuser.currency) + parseInt(amount)
                     dbuser.total_currency = parseInt(dbuser.bank) + parseInt(dbuser.currency)
                     dbuser.save().catch(console.error)
-                    return checkmarkText(`Вы успешно сняли с банка **${amount}**${coin}`, message)
+                    return checkmarkText(`Вы успешно сняли с банка **${parseInt(amount)}**${coin}`, message)
                 }catch(err){
                     console.error(chalk.redBright(err.stack))
                     console.error(chalk.yellowBright('Продолжаю работу после ошибки...'))
