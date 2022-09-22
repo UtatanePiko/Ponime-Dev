@@ -308,7 +308,7 @@ module.exports = async (message, options, amount) => {
         finalEmbed.fields.push({ name: `Ваша рука`, value: `Карты: ${finalResult.ycard.map(c => `[\`${c.emoji} ${c.rank}\`](https://google.com)`).join(" ")}\nВсего: ${finalResult.ycard.map(card => card.value).reduce((a, b) => b+a)}`, inline: true })
         finalEmbed.fields.push({ name: `Рука ${message.client.user.username}`, value: `Карты: ${finalResult.dcard.map(c => `[\`${c.emoji} ${c.rank}\`](https://google.com)`).join(" ")}\nВсего: ${finalResult.dcard.map(card => card.rank === "A" ? 1 : card.value).reduce((a, b) => b+a)}`, inline: true })
         
-        options.commandType === "message" ? message.reply({ embeds: [finalEmbed] }) : message.reply({ embeds: [finalEmbed] })
+        options.commandType === "message" ? currentMessage.edit({ embeds: [finalEmbed] }) : currentMessage.edit({ embeds: [finalEmbed] })
         
         
     }

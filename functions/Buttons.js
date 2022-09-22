@@ -951,6 +951,30 @@ module.exports = {
         return action
     },
 
+    LINK_BUTTON_TO_CHATS(number, state){
+        let link
+        if(number == 1) link = "https://discord.com/channels/705508214019588116/803620469273264138"
+        if(number == 2) link = "https://discord.com/channels/705508214019588116/905843600720543795"
+        if(number == 3) link = "https://discord.com/channels/705508214019588116/1019844822024069171"
+        if(number == 4) link = "https://discord.com/channels/705508214019588116/802685061274402866"
+        if(number == 5) link = "https://discord.com/channels/705508214019588116/812070015133810718"
+        if(number == 6) link = "https://discord.com/channels/705508214019588116/880530956304392262"
+        if(number == 7) link = "https://discord.com/channels/705508214019588116/841889007654141982"
+        if(number == 8) link = "https://discord.com/channels/705508214019588116/881547338559139841"
+        if(number == 9) link = "https://discord.com/channels/705508214019588116/824735521476444230"
+        if(number == 10) link = "https://discord.com/channels/705508214019588116/839971355767865394"
+        let action = new Discord.MessageActionRow().addComponents(
+            [
+                new Discord.MessageButton()
+                .setDisabled(false)
+                .setStyle('LINK')
+                .setLabel(`Перейти к чату`)
+                .setURL(`${link}`),
+            ]
+        )
+        return action
+    },
+
     FAQ_SELECT_MENU(state){
         let chpoki_coin_gif = Util.findEmoji('CHPOKI_COIN_GIF')
         let questions = Util.findEmoji('questions')
