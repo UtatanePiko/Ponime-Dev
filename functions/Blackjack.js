@@ -1,7 +1,7 @@
 const shuffle = require("shuffle-array")
 const games = new Set();
 const Discord = require("discord.js");
-const Collect = require("./collect");
+const Collect = require("./Collect");
 const { noColor } = require("./Colours");
 const Util = require('./Util')
 const coin = Util.findEmoji(`CHPOKI_COIN`)
