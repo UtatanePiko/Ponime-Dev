@@ -23,7 +23,7 @@ module.exports = {
             const crimeSucArray = economy.crime_suc
             const crimeFailArray = economy.crime_fail
 
-            if(message.author.id != "329462919676821504") return
+            
 
             if(args[0] == "help" || args[0] == "помощь"){
                 const userEmbed = new Embeds({

@@ -15,7 +15,7 @@ module.exports = {
             const { noColor } = require('../../functions/Colours')
             const prefix = bot.server.get(message.guild.id).prefix
 
-            if(message.author.id != "329462919676821504") return
+            
 
             if(args[0] == "help" || args[0] == "помощь"){
                 const embed = new Embeds({

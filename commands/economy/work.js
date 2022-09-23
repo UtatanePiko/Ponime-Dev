@@ -22,7 +22,7 @@ module.exports = {
             const economy = await Economy.findOne({guildID: message.guild.id})
             const dailyArray = economy.daily_text
 
-            if(message.author.id != "329462919676821504") return
+            
 
             if(args[0] == "help" || args[0] == "помощь"){
                 const userEmbed = new Embeds({

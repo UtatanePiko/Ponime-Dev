@@ -20,7 +20,7 @@ module.exports = {
             const prefix = bot.server.get(message.guild.id).prefix
             const blackjack = require('../../functions/Blackjack')
             
-            if(message.author.id != "329462919676821504") return
+            
 
             if(args[0] == "help" || args[0] == "помощь"){
                 const userEmbed = new Embeds({

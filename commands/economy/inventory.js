@@ -20,7 +20,7 @@ module.exports = {
             const negative_roles = bot.negative_roles.get(message.guild.id)
             console.log(negative_roles)
 
-            //if(message.author.id != "329462919676821504") return
+            //
 
             if(args[0] == "help" || args[0] == "помощь"){
                 const embed = new Embeds({
